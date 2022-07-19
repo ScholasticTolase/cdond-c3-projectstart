@@ -30,7 +30,8 @@ commands:
             #  npm install
             #  Add revert code here. You can find this in the Getting Started section.
               exit 1
-            fi         
+            fi
+            
 jobs:
   build-frontend:
     docker:
@@ -84,7 +85,7 @@ jobs:
 
                 
   test-backend:
-     docker:
+    docker:
       - image: circleci/node:13.8.0
     steps:
       - checkout
