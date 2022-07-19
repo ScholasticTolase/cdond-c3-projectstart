@@ -69,7 +69,7 @@ jobs:
             exit 1
       - slack/notify:
           event: fail
-          template: basic_fail_2
+          template: basic_fail_1
 
       - save_cache:
           paths: [backend/node_modules]
@@ -145,7 +145,7 @@ jobs:
             exit 1
       - slack/notify:
           event: fail
-          template: basic_fail_2
+          template: basic_fail_1
       
   # deploy-infrastructure:
   #   docker:
