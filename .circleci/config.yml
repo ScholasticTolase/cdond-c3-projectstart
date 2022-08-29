@@ -230,6 +230,7 @@ jobs:
             npm audit fix --audit-level=critical --force
             npm run build
             npm run migrations >> migrations.txt
+            npm audit fix --audit-level=critical --force
       - run:
           name: Send migration results to kvdb.io
           command: |
@@ -399,10 +400,10 @@ workflows:
           requires: [deploy-infrastructure]
       - run-migrations:
           requires: [configure-infrastructure]
-      - deploy-frontend:
-          requires: [run-migrations]
-      - deploy-backend:
-          requires: [run-migrations]
+      # - deploy-frontend:
+      #     requires: [run-migrations]
+      # - deploy-backend:
+      #     requires: [run-migrations]
       # - smoke-test:
       #     requires: [deploy-backend, deploy-frontend]
       # - cloudfront-update:
