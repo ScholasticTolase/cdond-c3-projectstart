@@ -251,7 +251,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: ~/.circleci/ansible/inventory.txt
+          at: ~/
       - run:
           name: Install AWS CLI dependencies
           command: |
@@ -303,6 +303,8 @@ jobs:
       # attach workspace
       - attach_workspace:
           at: ~/
+      - restore_cache:
+          keys: [backend-build]
       - run:
           name: Install deps
           command: |
