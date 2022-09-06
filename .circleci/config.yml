@@ -233,13 +233,13 @@ jobs:
             && sudo apt-get clean && sudo apt-get install curl
       
       - run:
-          name: Install awscli
+          name: Install aws-cli
           command: |
-            pip3 --no-cache-dir install --upgrade awscli
+            pip3 --no-cache-dir install --upgrade aws-cli
       - run:
           name: Send migration results to kvdb.io
           command: |
-            if grep -q "has been executed successfully." ~/project/backend/migrations_dump.txt
+            if grep -q "has been executed successfully." ~/project/backend/migrations.txt
             then
               sudo apt-get update && sudo apt-get install -y ca-certificates
               curl --insecure https://kvdb.io/Rq8z8NKVQyBRrgeKxHKCeo/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
@@ -305,7 +305,6 @@ jobs:
       - run:
           name: Deploy backend
           command: |
-            # your code here
             cd backend
             npm install
             npm run build
